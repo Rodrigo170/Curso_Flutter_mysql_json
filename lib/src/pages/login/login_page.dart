@@ -120,7 +120,7 @@ class LoginPage extends StatelessWidget {
           width: 7,
         ),
         GestureDetector(
-          onTap: () => con.goToRegiterPage(),
+          onTap: () => con.goToRegisterPage(),
           child: Text(
             'Registrate Aqui',
             style: TextStyle(

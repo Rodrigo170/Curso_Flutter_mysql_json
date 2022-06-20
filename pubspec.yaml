@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5 # Es una solución extraligera y potente para Flutter. Combina gestión de estado de alto rendimiento, inyección de dependencia inteligente y gestión de rutas de forma rápida y práctica.
   get_storage: ^2.0.3
+  image_picker: ^0.8.5+3
+  http: ^0.13.4
+  sn_progress_dialog: ^1.0.8
   
 dev_dependencies:
   flutter_test:
