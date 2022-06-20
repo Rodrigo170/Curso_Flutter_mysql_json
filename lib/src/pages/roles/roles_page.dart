@@ -4,7 +4,6 @@ import 'package:udemy_flutter/src/models/rol.dart';
 import 'package:udemy_flutter/src/pages/roles/roles_controller.dart';
 
 class RolesPage extends StatelessWidget {
-
   RolesController con = Get.put(RolesController());
 
   @override
@@ -13,17 +12,18 @@ class RolesPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Seleccionar el rol',
-          style: TextStyle(
-            color: Colors.black
-          ),
+          style: TextStyle(color: Colors.black),
         ),
       ),
       body: Container(
-        margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.12),
+        margin: EdgeInsets.symmetric(
+            vertical: MediaQuery.of(context).size.height * 0.12),
         child: ListView(
-          children: con.user.roles != null ? con.user.roles!.map((Rol rol) {
-            return _cardRol(rol);
-          }).toList() : [],
+          children: con.user.roles != null
+              ? con.user.roles!.map((Rol rol) {
+                  return _cardRol(rol);
+                }).toList()
+              : [],
         ),
       ),
     );
@@ -34,7 +34,8 @@ class RolesPage extends StatelessWidget {
       onTap: () => con.goToPageRol(rol),
       child: Column(
         children: [
-          Container( // IMAGEN
+          Container(
+            // IMAGEN
             margin: EdgeInsets.only(bottom: 15, top: 15),
             height: 100,
             child: FadeInImage(
@@ -46,15 +47,10 @@ class RolesPage extends StatelessWidget {
           ),
           Text(
             rol.name ?? '',
-            style: TextStyle(
-              fontSize: 16,
-              color: Colors.black
-            ),
+            style: TextStyle(fontSize: 16, color: Colors.black),
           )
         ],
       ),
     );
   }
-
-
 }
