@@ -8,6 +8,7 @@ import 'package:udemy_flutter/src/pages/restaurant/categories/create/restaurant_
 import 'package:udemy_flutter/src/pages/restaurant/categories/create/restaurant_categories_create_page.dart';
 import 'package:udemy_flutter/src/pages/restaurant/home/restaurant_home_controller.dart';
 import 'package:udemy_flutter/src/pages/restaurant/orders/list/restaurant_orders_list_page.dart';
+import 'package:udemy_flutter/src/pages/restaurant/products/create/restaurant_products_create_page.dart';
 import 'package:udemy_flutter/src/utils/custom_animated_bottom_bar.dart';
 
 class RestaurantHomePage extends StatelessWidget {
@@ -22,7 +23,7 @@ class RestaurantHomePage extends StatelessWidget {
               children: [
                 RestaurantOrdersListPage(),
                 RestaurantCategoriesCreatePage(),
-                DeliveryOrdersListPage(),
+                RestaurantProductsCreatePage(),
                 ClientProfileInfoPage()
               ],
             )));
