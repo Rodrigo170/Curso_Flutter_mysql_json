@@ -10,6 +10,7 @@ class ClientProductsDetailController extends GetxController {
   List<Product> selectedProducts = [];
   ClientProdudctListController productsListController = Get.find();
 
+  //SI LOS PRODUCTOS FUERON AÑADIDOS
   void checkIfProductsWasAdded(Product product, var price, var counter) {
     price.value = product.price ?? 0.0;
 

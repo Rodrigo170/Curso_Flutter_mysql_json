@@ -42,6 +42,7 @@ dependencies:
   modal_bottom_sheet: ^2.0.1
   flutter_image_slideshow: ^0.1.2
   fluttertoast: ^8.0.9
+  google_maps_flutter: ^2.1.8
   
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/img/
+    - assets/img/no-image.png
+    - assets/img/my_location_yellow.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -20,13 +20,21 @@ class ClientProdudctListPage extends StatelessWidget {
           length: con.categories.length,
           child: Scaffold(
               appBar: PreferredSize(
-                preferredSize: Size.fromHeight(50),
+                preferredSize: Size.fromHeight(100),
                 child: AppBar(
+                  flexibleSpace: Container(
+                    margin: EdgeInsets.only(top: 15),
+                    alignment: Alignment.topCenter,
+                    child: Wrap(
+                      direction: Axis.horizontal,
+                      children: [_textFieldSearch(context), _iconShoppingBag()],
+                    ),
+                  ),
                   bottom: TabBar(
                     isScrollable: true,
                     indicatorColor: Colors.amber,
                     labelColor: Colors.black,
-                    unselectedLabelColor: Colors.grey[700],
+                    unselectedLabelColor: Colors.grey[400],
                     tabs: List<Widget>.generate(con.categories.length, (index) {
                       return Tab(
                         child: Text(con.categories[index].name ?? ''),
@@ -60,6 +68,71 @@ class ClientProdudctListPage extends StatelessWidget {
                 }).toList(),
               )),
         ));
+  }
+
+  Widget _iconShoppingBag() {
+    return SafeArea(
+      child: Container(
+        margin: EdgeInsets.only(left: 10),
+        child: con.items.value > 0
+            ? Stack(
+                children: [
+                  IconButton(
+                      onPressed: () => con.goToOrderCreate(),
+                      icon: Icon(
+                        Icons.shopping_bag_outlined,
+                        size: 33,
+                      )),
+                  Positioned(
+                      right: 4,
+                      top: 12,
+                      child: Container(
+                        width: 16,
+                        height: 16,
+                        alignment: Alignment.center,
+                        child: Text(
+                          '${con.items.value}',
+                          style: TextStyle(fontSize: 12),
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30))),
+                      ))
+                ],
+              )
+            : IconButton(
+                onPressed: () => con.goToOrderCreate(),
+                icon: Icon(
+                  Icons.shopping_bag_outlined,
+                  size: 30,
+                )),
+      ),
+    );
+  }
+
+  Widget _textFieldSearch(BuildContext context) {
+    return SafeArea(
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.75,
+        child: TextField(
+          // onChanged: con.onChangeText,
+          decoration: InputDecoration(
+              hintText: 'Buscar producto',
+              suffixIcon: Icon(Icons.search, color: Colors.grey),
+              hintStyle: TextStyle(fontSize: 17, color: Colors.grey),
+              fillColor: Colors.white,
+              filled: true,
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide(color: Colors.grey)),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide(color: Colors.grey)),
+              contentPadding: EdgeInsets.all(15)),
+        ),
+      ),
+    );
   }
 
   Widget _cardProduct(BuildContext context, Product product) {
@@ -98,11 +171,11 @@ class ClientProdudctListPage extends StatelessWidget {
                   child: FadeInImage(
                     image: product.image1 != null
                         ? NetworkImage(product.image1!)
-                        : AssetImage('assets/img/no-image.png')
+                        : AssetImage('assets/img/cero-items.png')
                             as ImageProvider,
                     fit: BoxFit.cover,
                     fadeInDuration: Duration(milliseconds: 50),
-                    placeholder: AssetImage('assets/img/no-image.png'),
+                    placeholder: AssetImage('assets/img/cero-items.png'),
                   ),
                 ),
               ),

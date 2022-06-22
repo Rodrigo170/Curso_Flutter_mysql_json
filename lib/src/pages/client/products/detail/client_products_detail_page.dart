@@ -7,7 +7,7 @@ import 'package:udemy_flutter/src/pages/client/products/detail/client_products_d
 
 class ClientProductsDetailPage extends StatelessWidget {
   Product? product;
-  late ClientProductsDetailController con;
+  late ClientProductsDetailController con; //inicializa mas tarde
   var counter = 0.obs;
   var price = 0.0.obs;
 
@@ -37,10 +37,10 @@ class ClientProductsDetailPage extends StatelessWidget {
   Widget _textNameProduct() {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 30, left: 30, right: 30),
+      margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
       child: Text(
         product?.name ?? '',
-        style: TextStyle(
+        style: const TextStyle(
             fontWeight: FontWeight.bold, fontSize: 22, color: Colors.black),
       ),
     );
@@ -49,10 +49,10 @@ class ClientProductsDetailPage extends StatelessWidget {
   Widget _textDescriptionProduct() {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 30, left: 30, right: 30),
+      margin: const EdgeInsets.only(top: 30, left: 30, right: 30),
       child: Text(
         product?.description ?? '',
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 16,
         ),
       ),
@@ -64,19 +64,19 @@ class ClientProductsDetailPage extends StatelessWidget {
       children: [
         Divider(height: 1, color: Colors.grey[400]),
         Container(
-          margin: EdgeInsets.only(left: 20, right: 20, top: 25),
+          margin: const EdgeInsets.only(left: 20, right: 20, top: 25),
           child: Row(
             children: [
               ElevatedButton(
                 onPressed: () => con.removeItem(product!, price, counter),
-                child: Text(
+                child: const Text(
                   '-',
                   style: TextStyle(color: Colors.black, fontSize: 22),
                 ),
                 style: ElevatedButton.styleFrom(
                     primary: Colors.white,
                     minimumSize: Size(45, 37),
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(25),
                       bottomLeft: Radius.circular(25),
@@ -86,7 +86,7 @@ class ClientProductsDetailPage extends StatelessWidget {
                 onPressed: () {},
                 child: Text(
                   '${counter.value}',
-                  style: TextStyle(color: Colors.black, fontSize: 18),
+                  style: const TextStyle(color: Colors.black, fontSize: 18),
                 ),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
@@ -95,25 +95,25 @@ class ClientProductsDetailPage extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () => con.addItem(product!, price, counter),
-                child: Text(
+                child: const Text(
                   '+',
                   style: TextStyle(color: Colors.black, fontSize: 22),
                 ),
                 style: ElevatedButton.styleFrom(
                     primary: Colors.white,
                     minimumSize: Size(45, 37),
-                    shape: RoundedRectangleBorder(
+                    shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                       topRight: Radius.circular(25),
                       bottomRight: Radius.circular(25),
                     ))),
               ),
-              Spacer(),
+              const Spacer(),
               ElevatedButton(
                 onPressed: () => con.addToBag(product!, price, counter),
                 child: Text(
                   'Agregar   \$${price.value}',
-                  style: TextStyle(
+                  style: const TextStyle(
                       color: Colors.black,
                       fontSize: 15,
                       fontWeight: FontWeight.bold),
@@ -135,10 +135,10 @@ class ClientProductsDetailPage extends StatelessWidget {
   Widget _textPriceProduct() {
     return Container(
       alignment: Alignment.centerLeft,
-      margin: EdgeInsets.only(top: 15, left: 30, right: 30),
+      margin: const EdgeInsets.only(top: 15, left: 30, right: 30),
       child: Text(
         '\$${product?.price.toString() ?? ''}',
-        style: TextStyle(
+        style: const TextStyle(
             fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold),
       ),
     );

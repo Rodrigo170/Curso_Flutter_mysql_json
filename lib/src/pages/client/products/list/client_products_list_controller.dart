@@ -1,44 +1,31 @@
-import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:udemy_flutter/src/pages/client/products/detail/client_products_detail_page.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+
 import 'package:udemy_flutter/src/provides/categories_provider.dart';
 import 'package:udemy_flutter/src/provides/products_provider.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+
 import '../../../../models/category.dart';
 import '../../../../models/product.dart';
+import '../detail/client_products_detail_page.dart';
 
 class ClientProdudctListController extends GetxController {
   CategoriesProvider categoriesProvider = CategoriesProvider();
   ProductsProvider productsProvider = ProductsProvider();
 
-  List<Product> selectedProducts = [];
+  //List<Product> selectedProducts = [];
 
   List<Category> categories = <Category>[].obs;
   var items = 0.obs;
 
   var productName = ''.obs;
-  Timer? searchOnStoppedTyping;
+  //Timer? searchOnStoppedTyping;
 
-  ClientProductsListController() {
+  ClientProdudctListController() {
     getCategories();
-    if (GetStorage().read('shopping_bag') != null) {
-      if (GetStorage().read('shopping_bag') is List<Product>) {
-        selectedProducts = GetStorage().read('shopping_bag');
-      } else {
-        selectedProducts =
-            Product.fromJsonList(GetStorage().read('shopping_bag'));
-      }
-
-      selectedProducts.forEach((p) {
-        items.value = items.value + (p.quantity!);
-      });
-    }
   }
 
-  void onChangeText(String text) {
+  /*void onChangeText(String text) {
     const duration = Duration(milliseconds: 800);
     if (searchOnStoppedTyping != null) {
       searchOnStoppedTyping?.cancel();
@@ -48,10 +35,11 @@ class ClientProdudctListController extends GetxController {
       productName.value = text;
       print('TEXTO COMPLETO: ${text}');
     });
-  }
+  }*/
 
   void getCategories() async {
     var result = await categoriesProvider.getAll();
+    print(result);
     categories.clear();
     categories.addAll(result);
   }
