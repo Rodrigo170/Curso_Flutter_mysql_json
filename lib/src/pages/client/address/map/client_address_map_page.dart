@@ -8,23 +8,23 @@ class ClientAddressMapPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
-          'Ubica tu dirección en el mapa ',
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-      body: Stack(
-        children: [
-          _googleMaps(),
-          _iconMyLocation(),
-          _cardAddress(),
-          _buttomAccept()
-        ],
-      ),
-    );
+    return Obx(() => Scaffold(
+          appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.black),
+            title: Text(
+              'Ubica tu dirección en el mapa ',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          body: Stack(
+            children: [
+              _googleMaps(),
+              _iconMyLocation(),
+              _cardAddress(),
+              _buttomAccept()
+            ],
+          ),
+        ));
   }
 
   Widget _buttomAccept() {
@@ -56,8 +56,8 @@ class ClientAddressMapPage extends StatelessWidget {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: const Text(
-            'Name address',
+          child: Text(
+            con.addressName.value,
             style: TextStyle(
                 color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
           ),
@@ -88,6 +88,9 @@ class ClientAddressMapPage extends StatelessWidget {
       myLocationEnabled: false,
       onCameraMove: (position) {
         con.initialPosition = position;
+      },
+      onCameraIdle: () async {
+        await con.setLocationDraggableInfo(); // EMPIEZA A OBTENER LA LAT Y LNG
       },
     );
   }
